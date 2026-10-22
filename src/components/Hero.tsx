@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTravel } from '../context/TravelContext';
+import heroBanner from '../assets/images/hero_luxury_travel_1792132430271.jpg';
 import { Calendar, Compass, ShieldCheck, Sparkles, MapPin, Users, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
@@ -31,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onOpenItineraryBuilder }) 
         <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-zinc-800/80 shadow-2xl min-h-[580px] lg:min-h-[640px] flex flex-col justify-between">
           {/* Background Image with Measured Scrim */}
           <img
-            src="/src/assets/images/hero_luxury_travel_1792132430271.jpg"
+            src={heroBanner}
             alt="Mediterranean Luxury Yacht Charter and Coastal Cliffs at Golden Hour"
             className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.92]"
             referrerPolicy="no-referrer"
