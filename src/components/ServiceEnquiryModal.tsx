@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle, Loader2, Send, X } from 'lucide-react';
-import { ENQUIRY_EMAIL, sendEnquiry } from '../data/skypeData';
+import { ENQUIRY_EMAIL, enquiryFailureMessage, sendEnquiry } from '../data/skypeData';
 
 type SendState = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -24,6 +24,7 @@ export const ServiceEnquiryModal: React.FC<{ service: string; onClose: () => voi
     message: '',
   });
   const [state, setState] = useState<SendState>('idle');
+  const [errorText, setErrorText] = useState('');
 
   const update = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -49,7 +50,8 @@ export const ServiceEnquiryModal: React.FC<{ service: string; onClose: () => voi
         Message: form.message || '-',
       });
       setState('sent');
-    } catch {
+    } catch (err) {
+      setErrorText(enquiryFailureMessage(err));
       setState('error');
     }
   };
@@ -134,15 +136,7 @@ export const ServiceEnquiryModal: React.FC<{ service: string; onClose: () => voi
               onChange={update('message')}
               className={`${inputCls} sm:col-span-2 resize-none`}
             />
-            {state === 'error' && (
-              <p className="sm:col-span-2 text-xs text-rose-600">
-                Could not send. Email us directly at{' '}
-                <a className="underline" href={`mailto:${ENQUIRY_EMAIL}`}>
-                  {ENQUIRY_EMAIL}
-                </a>
-                .
-              </p>
-            )}
+            {state === 'error' && <p className="sm:col-span-2 text-xs text-rose-600">{errorText}</p>}
             <button
               type="submit"
               disabled={state === 'sending'}

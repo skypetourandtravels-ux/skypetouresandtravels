@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTravel } from '../../context/TravelContext';
-import { sendEnquiry } from '../../data/skypeData';
+import { enquiryFailureMessage, sendEnquiry } from '../../data/skypeData';
 import { BookingRecord } from '../../types/travel';
 import { X, CheckCircle, ShieldCheck, Ticket, Download, MessageSquareCode, QrCode, Calendar, Users, Phone, Mail, User } from 'lucide-react';
 
@@ -58,8 +58,8 @@ export const BookingCheckoutModal: React.FC<BookingCheckoutModalProps> = ({
         Message: specialRequests || '-',
       });
       setEmailed(true);
-    } catch {
-      setSendError('Could not send your details. Please email shaji@skypetours.com directly.');
+    } catch (err) {
+      setSendError(enquiryFailureMessage(err));
     } finally {
       setIsSubmitting(false);
     }

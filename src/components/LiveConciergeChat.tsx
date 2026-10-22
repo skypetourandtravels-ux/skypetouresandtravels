@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTravel } from '../context/TravelContext';
 import { ChatMessage } from '../types/travel';
-import { CONTACT_PHONE, CONTACT_PHONE_TEL, ENQUIRY_EMAIL, sendEnquiry } from '../data/skypeData';
+import { CONTACT_PHONE, CONTACT_PHONE_TEL, ENQUIRY_EMAIL, enquiryFailureMessage, sendEnquiry } from '../data/skypeData';
 import { CheckCheck, Loader2, Send, X } from 'lucide-react';
 
 const BOT_NAME = 'Skype Tours';
@@ -64,6 +64,7 @@ export const LiveConciergeChat: React.FC = () => {
   const [showContact, setShowContact] = useState(false);
   const [contact, setContact] = useState({ name: '', phone: '', email: '', note: '' });
   const [sendState, setSendState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [sendError, setSendError] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const replyTimer = useRef<number | null>(null);
 
@@ -158,7 +159,8 @@ export const LiveConciergeChat: React.FC = () => {
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         },
       ]);
-    } catch {
+    } catch (err) {
+      setSendError(enquiryFailureMessage(err));
       setSendState('error');
     }
   };
@@ -280,7 +282,7 @@ export const LiveConciergeChat: React.FC = () => {
                 className={`${inputCls} resize-none`}
               />
               {sendState === 'error' && (
-                <p className="text-[11px] text-rose-400">Could not send. Email {ENQUIRY_EMAIL} directly.</p>
+                <p className="text-[11px] text-rose-300">{sendError}</p>
               )}
               <button
                 type="submit"

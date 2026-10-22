@@ -21,7 +21,7 @@ import {
   CheckCircle,
   X,
 } from 'lucide-react';
-import { Destination, DOMESTIC, INTERNATIONAL, SERVICE_NAMES, ENQUIRY_EMAIL, sendEnquiry } from '../data/skypeData';
+import { Destination, DOMESTIC, INTERNATIONAL, SERVICE_NAMES, enquiryFailureMessage, sendEnquiry } from '../data/skypeData';
 import { ServiceEnquiryModal } from './ServiceEnquiryModal';
 
 const SERVICE_ICONS = [Palmtree, Hotel, Plane, Bus, TrainFront, Car, ShieldCheck, FileCheck2, Globe2, Stethoscope, Stamp, Ticket, BadgeCheck, Package, Banknote];
@@ -33,6 +33,7 @@ const DestinationCard: React.FC<{ dest: Destination }> = ({ dest }) => {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', travelDate: '', travellers: '', message: '' });
   const [state, setState] = useState<SendState>('idle');
+  const [errorText, setErrorText] = useState('');
 
   const update = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -54,7 +55,8 @@ const DestinationCard: React.FC<{ dest: Destination }> = ({ dest }) => {
       });
       setState('sent');
       setForm({ name: '', phone: '', email: '', travelDate: '', travellers: '', message: '' });
-    } catch {
+    } catch (err) {
+      setErrorText(enquiryFailureMessage(err));
       setState('error');
     }
   };
@@ -173,14 +175,7 @@ const DestinationCard: React.FC<{ dest: Destination }> = ({ dest }) => {
               onChange={update('message')}
               className={`${inputCls} resize-none flex-1`}
             />
-            {state === 'error' && (
-              <p className="text-[11px] text-rose-400">
-                Could not send. Please try again or email{' '}
-                <a href={`mailto:${ENQUIRY_EMAIL}`} className="underline">
-                  {ENQUIRY_EMAIL}
-                </a>
-              </p>
-            )}
+            {state === 'error' && <p className="text-[11px] text-rose-200">{errorText}</p>}
             <button
               type="submit"
               disabled={state === 'sending'}

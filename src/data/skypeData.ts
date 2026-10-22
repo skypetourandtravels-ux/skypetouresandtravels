@@ -83,3 +83,11 @@ export async function sendEnquiry(subject: string, fields: Record<string, string
   const data = await res.json().catch(() => ({}));
   if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'Send failed');
 }
+
+export function enquiryFailureMessage(error: unknown): string {
+  const raw = error instanceof Error ? error.message : '';
+  if (/activat/i.test(raw)) {
+    return `This first enquiry needs a one-time confirmation. Open ${ENQUIRY_EMAIL}, click Activate Form in that email, then submit again. You can also call ${CONTACT_PHONE}.`;
+  }
+  return `Could not send. Email ${ENQUIRY_EMAIL} or call ${CONTACT_PHONE}.`;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Compass, MapPin, Plane, Send, Loader2, CheckCircle, Check } from 'lucide-react';
-import { DOMESTIC, INTERNATIONAL, SERVICE_NAMES, ENQUIRY_EMAIL, sendEnquiry } from '../../data/skypeData';
+import { DOMESTIC, INTERNATIONAL, SERVICE_NAMES, enquiryFailureMessage, sendEnquiry } from '../../data/skypeData';
 
 type TripType = 'Domestic' | 'International';
 type SendState = 'idle' | 'sending' | 'sent' | 'error';
@@ -35,6 +35,7 @@ export const ItineraryBuilder: React.FC = () => {
   const [contact, setContact] = useState(EMPTY_CONTACT);
   const [state, setState] = useState<SendState>('idle');
   const [error, setError] = useState('');
+  const [sendError, setSendError] = useState('');
 
   const options = tripType === 'Domestic' ? DOMESTIC : INTERNATIONAL;
 
@@ -57,6 +58,7 @@ export const ItineraryBuilder: React.FC = () => {
       return;
     }
     setError('');
+    setSendError('');
     setState('sending');
     try {
       await sendEnquiry(`Trip plan request: ${tripType} – ${destinations.join(', ')}`, {
@@ -76,7 +78,8 @@ export const ItineraryBuilder: React.FC = () => {
       setState('sent');
       setContact(EMPTY_CONTACT);
       setDestinations([]);
-    } catch {
+    } catch (err) {
+      setSendError(enquiryFailureMessage(err));
       setState('error');
     }
   };
@@ -223,14 +226,7 @@ export const ItineraryBuilder: React.FC = () => {
                 <textarea rows={3} value={contact.notes} onChange={update('notes')} className={`${inputCls} resize-none`} />
               </div>
 
-              {state === 'error' && (
-                <p className="text-xs text-rose-400">
-                  Could not send your request. Please try again or email{' '}
-                  <a href={`mailto:${ENQUIRY_EMAIL}`} className="underline">
-                    {ENQUIRY_EMAIL}
-                  </a>
-                </p>
-              )}
+              {state === 'error' && sendError && <p className="text-xs text-rose-600">{sendError}</p>}
 
               <button
                 type="submit"
