@@ -12,7 +12,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-zinc-200 shadow-sm transition-colors">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 px-6 py-2">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 px-4 xl:px-6 py-2">
         <a
           href="#"
           onClick={(e) => {
@@ -22,11 +22,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           className="shrink-0"
           aria-label="Skype Tours & Travels"
         >
-          <img src="/images/skype-logo.png" alt="Skype Tours & Travels" className="h-[4.5rem] sm:h-20 w-auto" />
+          <span className="flex items-center gap-2">
+            <img src="/images/skype-logo-mark.jpg" alt="" className="h-12 xl:h-14 w-auto" />
+            <img src="/images/skype-logo-wordmark.jpg" alt="Skype Tours Travels" className="h-5 sm:h-7 xl:h-8 w-auto" />
+          </span>
         </a>
 
         {/* Zone 2: 4–5 clean single-line text navigation links */}
-        <nav className="hidden lg:flex items-center gap-4 text-sm font-medium text-zinc-700">
+        <nav className="hidden xl:flex items-center gap-2.5 text-sm font-medium text-zinc-700">
           <button
             onClick={() => onNavigate('services')}
             className="hover:text-amber-600 transition-colors whitespace-nowrap shrink-0 cursor-pointer"

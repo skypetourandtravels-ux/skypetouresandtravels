@@ -12,7 +12,10 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-stone-200">
           {/* Col 1: Wordmark & Heritage */}
           <div className="space-y-4 md:col-span-1">
-            <img src="/images/skype-logo.png" alt="Skype Tours & Travels" className="h-28 w-auto" />
+            <div className="flex items-center gap-3">
+              <img src="/images/skype-logo-mark.jpg" alt="" className="h-16 w-auto" />
+              <img src="/images/skype-logo-wordmark.jpg" alt="Skype Tours Travels" className="h-8 w-auto max-w-[11rem]" />
+            </div>
             <p className="text-stone-600 text-xs leading-relaxed font-light">
               Flight, bus, train, hotel and holiday bookings, with airport and local travel in ordinary cars.
             </p>
