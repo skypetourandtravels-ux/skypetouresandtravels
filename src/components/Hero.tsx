@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTravel } from '../context/TravelContext';
-import heroBanner from '../assets/images/hero_luxury_travel_1792132430271.jpg';
+import heroBanner from '../assets/images/Sunset Traveler Coastal Banner.png';
 import { Calendar, Compass, ShieldCheck, Sparkles, MapPin, Users, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
@@ -29,40 +29,33 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onOpenItineraryBuilder }) 
       {/* Hero Container */}
       <div className="max-w-7xl mx-auto px-6">
         {/* Main Hero Card with High-Res Photography Backdrop */}
-        <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-zinc-800/80 shadow-2xl min-h-[580px] lg:min-h-[640px] flex flex-col justify-between">
-          {/* Background Image with Measured Scrim */}
+        <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-sky-100 shadow-[0_20px_50px_rgba(28,25,23,0.12)] bg-[#e8f4fb]">
           <img
             src={heroBanner}
-            alt="Mediterranean Luxury Yacht Charter and Coastal Cliffs at Golden Hour"
-            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.92]"
-            referrerPolicy="no-referrer"
+            alt="A traveller with a backpack watches the sunset over a coastal bay as a plane crosses the sky"
+            className="block h-auto w-full"
           />
-          {/* Measured gradient scrim for WCAG AA readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/25" />
-          <div className="absolute inset-0 bg-radial from-transparent via-zinc-950/30 to-zinc-950/80" />
 
-          {/* Top Editorial Kicker & Direct Access */}
-          <div className="relative z-10 p-6 md:p-10 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs font-medium tracking-widest text-amber-300 uppercase">
-              <span>Bespoke Journeys</span>
-              <span aria-hidden="true">·</span>
-              <span>Private Aviation</span>
-              <span aria-hidden="true">·</span>
-              <span>Sanctuary Retreats</span>
+          <div className="relative z-10 flex flex-col justify-center gap-3 p-6 md:p-8 lg:absolute lg:inset-y-0 lg:left-0 lg:max-w-[46%] lg:gap-3 lg:p-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="flex items-center gap-2 text-[11px] font-medium tracking-widest text-amber-800 uppercase">
+                <span>Bespoke Journeys</span>
+                <span aria-hidden="true">·</span>
+                <span>Private Aviation</span>
+                <span aria-hidden="true">·</span>
+                <span>Sanctuary Retreats</span>
+              </div>
+              <button
+                onClick={handleAskConcierge}
+                className="text-xs text-stone-700 hover:text-amber-800 transition-colors flex items-center gap-1.5 bg-white/80 backdrop-blur-sm border border-sky-100 rounded-lg px-3 py-1.5"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                <span>Talk to Private Travel Director</span>
+              </button>
             </div>
-            <button
-              onClick={handleAskConcierge}
-              className="text-xs text-zinc-300 hover:text-amber-300 transition-colors flex items-center gap-1.5 bg-zinc-900/70 backdrop-blur-sm border border-zinc-700/60 rounded-lg px-3 py-1.5"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Talk to Private Travel Director</span>
-            </button>
-          </div>
 
-          {/* Center / Bottom Hero Content */}
-          <div className="relative z-10 px-6 md:px-12 pb-10 pt-16 max-w-4xl">
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-zinc-50 leading-[1.15] tracking-tight mb-5"
+              className="text-3xl lg:text-4xl font-serif font-bold text-stone-900 leading-[1.12] tracking-tight"
               style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
                 textWrap: 'balance',
@@ -70,15 +63,14 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onOpenItineraryBuilder }) 
             >
               Flight, Bus, Train and Holiday Bookings with Skype Tours and Travels.
             </h1>
-            <p className="text-base sm:text-lg text-zinc-300/90 max-w-2xl font-normal leading-relaxed mb-8">
+            <p className="text-sm sm:text-base text-stone-700 max-w-xl font-normal leading-relaxed">
               Book flight tickets, bus tickets, train tickets, hotels, airport and local transport, visas and holiday packages. Enter your details and Skype Tours and Travels receives the request by email.
             </p>
 
-            {/* Quick Actions */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenItineraryBuilder}
-                className="px-6 py-3.5 text-sm font-semibold text-zinc-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 rounded-xl hover:from-amber-300 hover:to-amber-400 transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
+                className="px-5 py-3 text-sm font-semibold text-zinc-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 rounded-xl hover:from-amber-300 hover:to-amber-400 transition-all shadow-lg shadow-amber-500/20 flex items-center gap-2"
               >
                 <Compass className="w-4 h-4 text-zinc-950" />
                 <span>Build Custom Itinerary</span>
@@ -86,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onOpenItineraryBuilder }) 
               </button>
               <a
                 href="#services"
-                className="px-6 py-3.5 text-sm font-medium text-zinc-200 bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700/70 backdrop-blur-md rounded-xl transition-colors"
+                className="px-5 py-3 text-sm font-medium text-stone-800 bg-white/85 hover:bg-white border border-stone-200 backdrop-blur-md rounded-xl transition-colors"
               >
                 Book a Ticket or Tour
               </a>
