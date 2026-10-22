@@ -156,7 +156,7 @@ export const BookingLookupModal: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-zinc-200 font-semibold block">Skype VIP Fast-Track Pass</span>
-                      <span className="text-[11px] text-zinc-400">Scan at private aviation FBO or palace concierge desk</span>
+                      <span className="text-[11px] text-zinc-400">Show this reference when you meet the car</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5 text-emerald-400 text-xs">

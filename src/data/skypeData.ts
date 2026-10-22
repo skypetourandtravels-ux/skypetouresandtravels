@@ -1,4 +1,6 @@
 export const ENQUIRY_EMAIL = 'shaji@skypetours.com';
+export const CONTACT_PHONE = '+91 6282 631 690';
+export const CONTACT_PHONE_TEL = '+916282631690';
 
 export interface Destination {
   name: string;

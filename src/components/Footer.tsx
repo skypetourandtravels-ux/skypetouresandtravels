@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTravel } from '../context/TravelContext';
-import { ShieldCheck, Mail } from 'lucide-react';
-import { ENQUIRY_EMAIL } from '../data/skypeData';
+import { ShieldCheck, Mail, Phone } from 'lucide-react';
+import { CONTACT_PHONE, CONTACT_PHONE_TEL, ENQUIRY_EMAIL } from '../data/skypeData';
 
 export const Footer: React.FC = () => {
   const { setIsBookingLookupOpen, setIsChatOpen } = useTravel();
@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-4 md:col-span-1">
             <img src="/images/skype-logo.png" alt="Skype Tours & Travels" className="h-28 w-auto" />
             <p className="text-stone-600 text-xs leading-relaxed font-light">
-              Purveyors of bespoke global expeditions, private aviation charters, and ultra-luxury palace retreats across seven continents.
+              Flight, bus, train, hotel and holiday bookings, with airport and local travel in ordinary cars.
             </p>
             <div className="flex items-center gap-2 text-stone-500 text-[11px]">
               <ShieldCheck className="w-3.5 h-3.5 text-amber-700" />
@@ -109,11 +109,17 @@ export const Footer: React.FC = () => {
           {/* Col 4: Private Desks & Offices */}
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-stone-900 uppercase tracking-widest">
-              Book by Email
+              Contact
             </h4>
             <div className="space-y-2 text-xs text-stone-600">
               <p className="leading-relaxed">
-                Flight, bus, train, hotel, transport and visa requests are emailed to our desk when you submit a form.
+                Call or email the desk for flight, bus, train, hotel, transport and visa bookings.
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                <a href={`tel:${CONTACT_PHONE_TEL}`} className="hover:text-amber-700 font-medium text-stone-900">
+                  {CONTACT_PHONE}
+                </a>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-amber-700 shrink-0" />

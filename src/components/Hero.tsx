@@ -41,7 +41,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onOpenItineraryBuilder }) 
               <div className="flex items-center gap-2 text-[11px] font-medium tracking-widest text-amber-800 uppercase">
                 <span>Bespoke Journeys</span>
                 <span aria-hidden="true">·</span>
-                <span>Private Aviation</span>
+                <span>Car Transfers</span>
                 <span aria-hidden="true">·</span>
                 <span>Sanctuary Retreats</span>
               </div>
@@ -121,7 +121,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onOpenItineraryBuilder }) 
                 className="bg-transparent text-sm font-medium text-stone-900 focus:outline-none cursor-pointer"
               >
                 <option value="All" className="bg-white text-stone-900">All Travel Styles</option>
-                <option value="Ultra-Luxury" className="bg-white text-stone-900">Ultra-Luxury Palace & Jet</option>
+                <option value="Ultra-Luxury" className="bg-white text-stone-900">Holiday Packages</option>
                 <option value="Romantic Escape" className="bg-white text-stone-900">Romantic Lagoon & Villa</option>
                 <option value="Wilderness Expedition" className="bg-white text-stone-900">Wilderness Safari & Trek</option>
               </select>

@@ -74,14 +74,14 @@ function MainContent() {
                     <Shield className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-serif font-bold text-stone-900 mb-2">
-                    Direct Tarmac & Discreet Security
+                    Airport and Local Car Transfers
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-light">
-                    Every private charter and first-class suite includes confidential baggage handling, private VIP CIP terminal escorts, and complete anonymity protocols.
+                    Pickup, drop-off and local trips use ordinary cars. Skype Tours does not offer private jets or premium cars such as Rolls-Royce. Share your time and address and the desk confirms a standard car.
                   </p>
                 </div>
                 <div className="pt-6 mt-6 border-t border-stone-200 text-xs text-amber-800 font-medium">
-                  Zero Commercial Queues Guaranteed
+                  Standard cars only
                 </div>
               </div>
 
@@ -91,14 +91,14 @@ function MainContent() {
                     <Sparkles className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-serif font-bold text-stone-900 mb-2">
-                    Key-Holder Access to Heritage Estates
+                    Flights, Buses, Trains and Visas
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-light">
-                    Unlock private doors normally closed to the public: after-hours private tours of Versailles, private wine cellars in Ravello, and secluded atolls.
+                    Ticket booking, hotels, holiday packages, visas, attestation, police clearance and GCC medical appointments are arranged by the same desk. Ground transport stays with ordinary cars.
                   </p>
                 </div>
                 <div className="pt-6 mt-6 border-t border-stone-200 text-xs text-amber-800 font-medium">
-                  Exclusive Virtuoso Global Privileges
+                  One desk for the whole trip
                 </div>
               </div>
 
@@ -146,7 +146,7 @@ function MainContent() {
                   ))}
                 </div>
                 <p className="text-sm text-stone-700 leading-relaxed italic mb-6">
-                  "Our 8-day Swiss journey on the Glacier Express Excellence Class was choreographed with absolute perfection. From the moment our helicopter landed in Zermatt to the lakeside suite in St. Moritz, Skype Tours treated us like royalty. Eleanor's immediate support on chat gave us total peace of mind."
+                  "Our trip was arranged without fuss. The airport pickup was a normal car, the hotel was ready when we arrived, and the desk stayed in touch by phone until we were back."
                 </p>
                 <div>
                   <h4 className="text-sm font-semibold text-stone-900">Sir Charles & Lady Hawthorne</h4>

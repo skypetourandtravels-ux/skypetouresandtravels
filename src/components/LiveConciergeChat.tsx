@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTravel } from '../context/TravelContext';
 import { ChatMessage } from '../types/travel';
-import { ENQUIRY_EMAIL, sendEnquiry } from '../data/skypeData';
+import { CONTACT_PHONE, CONTACT_PHONE_TEL, ENQUIRY_EMAIL, sendEnquiry } from '../data/skypeData';
 import { CheckCheck, Loader2, Send, X } from 'lucide-react';
 
 const BOT_NAME = 'Skype Tours';
@@ -245,7 +245,8 @@ export const LiveConciergeChat: React.FC = () => {
           {showContact && sendState !== 'sent' && (
             <form onSubmit={handleContactSubmit} className="px-3 py-3 border-t border-zinc-800 bg-zinc-900 space-y-2">
               <p className="text-[11px] text-zinc-300">
-                Name and phone are required. We email this chat to {ENQUIRY_EMAIL}.
+                Name and phone are required. We email this chat to {ENQUIRY_EMAIL}, or call{' '}
+                <a href={`tel:${CONTACT_PHONE_TEL}`} className="text-amber-300 underline">{CONTACT_PHONE}</a>.
               </p>
               <div className="grid grid-cols-2 gap-2">
                 <input

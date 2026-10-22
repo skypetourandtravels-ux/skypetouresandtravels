@@ -4,11 +4,36 @@ import { Camera, Lock, LogOut, Upload, Trash2, X, Play, Loader2, ChevronLeft, Ch
 interface MediaItem {
   id: string;
   file: string;
+  src?: string;
   type: 'photo' | 'video';
   caption: string;
   trip: string;
   uploadedAt: string;
+  featured?: boolean;
 }
+
+const FEATURED_MEDIA: MediaItem[] = [
+  {
+    id: 'featured-8498',
+    file: 'traveller-8498.mp4',
+    src: '/gallery/traveller-8498.mp4',
+    type: 'video',
+    caption: 'Travellers together by the river',
+    trip: 'Mountain trip',
+    uploadedAt: '2026-10-10T12:04:42.000Z',
+    featured: true,
+  },
+  {
+    id: 'featured-8499',
+    file: 'traveller-8499.mp4',
+    src: '/gallery/traveller-8499.mp4',
+    type: 'video',
+    caption: 'A moment from the mountain trip',
+    trip: 'Mountain trip',
+    uploadedAt: '2026-10-10T12:08:33.000Z',
+    featured: true,
+  },
+];
 
 type Filter = 'all' | 'photo' | 'video';
 
@@ -21,7 +46,7 @@ const getStoredToken = () => {
   }
 };
 
-const mediaUrl = (item: MediaItem) => `/uploads/${item.file}`;
+const mediaUrl = (item: MediaItem) => item.src || `/uploads/${item.file}`;
 
 export const Gallery: React.FC = () => {
   const [items, setItems] = useState<MediaItem[]>([]);
@@ -47,9 +72,11 @@ export const Gallery: React.FC = () => {
   const load = async () => {
     try {
       const res = await fetch('/api/gallery');
-      setItems(res.ok ? await res.json() : []);
+      const remote: MediaItem[] = res.ok ? await res.json() : [];
+      const remoteIds = new Set(remote.map((item) => item.id));
+      setItems([...FEATURED_MEDIA.filter((item) => !remoteIds.has(item.id)), ...remote]);
     } catch {
-      setItems([]);
+      setItems(FEATURED_MEDIA);
     } finally {
       setLoading(false);
     }
@@ -268,7 +295,7 @@ export const Gallery: React.FC = () => {
                     {item.caption && <p className="text-[11px] text-zinc-300 line-clamp-1">{item.caption}</p>}
                   </div>
                 )}
-                {isAdmin && (
+                {isAdmin && !item.featured && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();

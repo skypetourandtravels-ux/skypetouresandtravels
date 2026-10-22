@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTravel } from '../context/TravelContext';
-import { Compass, MessageSquareCode } from 'lucide-react';
+import { Compass, MessageSquareCode, Phone } from 'lucide-react';
+import { CONTACT_PHONE, CONTACT_PHONE_TEL } from '../data/skypeData';
 
 interface HeaderProps {
   onNavigate: (sectionId: string) => void;
@@ -73,6 +74,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
         </nav>
 
         <div className="flex items-center gap-3 shrink-0">
+          <a
+            href={`tel:${CONTACT_PHONE_TEL}`}
+            className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-stone-900 hover:text-amber-700 whitespace-nowrap"
+          >
+            <Phone className="w-4 h-4 text-amber-700" />
+            {CONTACT_PHONE}
+          </a>
+          <a
+            href={`tel:${CONTACT_PHONE_TEL}`}
+            aria-label={`Call ${CONTACT_PHONE}`}
+            className="sm:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-stone-200 text-amber-700"
+          >
+            <Phone className="w-4 h-4" />
+          </a>
           <button
             onClick={() => onNavigate('itinerary-builder')}
             className="px-4 py-2 text-xs md:text-sm font-medium text-zinc-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 rounded-lg hover:from-amber-300 hover:to-amber-400 shadow-md shadow-amber-500/15 transition-all whitespace-nowrap shrink-0 font-semibold"

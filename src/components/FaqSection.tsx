@@ -5,7 +5,7 @@ import { ChevronDown, Sparkles, HelpCircle, ShieldCheck, Compass, MessageSquareC
 interface FaqItem {
   question: string;
   answer: string;
-  category: 'Booking & Portals' | 'Custom Itineraries' | 'Aviation & Concierge' | 'Pricing & Guarantees';
+  category: 'Booking & Portals' | 'Custom Itineraries' | 'Transport & Concierge' | 'Pricing & Guarantees';
 }
 
 export const FaqSection: React.FC = () => {
@@ -22,7 +22,7 @@ export const FaqSection: React.FC = () => {
     {
       category: 'Custom Itineraries',
       question: 'Can I customize every day of my travel itinerary using the builder?',
-      answer: 'Absolutely. The Skype Tours Interactive Itinerary Builder enables you to architect your entire journey day-by-day. You can assign morning, afternoon, and evening experiences from our Curated Experience Catalog (such as private Matterhorn helicopter landings, vintage Riva charters in Capri, or sunrise balloon safaris), propose custom bespoke activities, select transport modes (Helicopter, Excellence Class rail, private chauffeur), and review real-time pricing and printable dossiers.',
+      answer: 'Yes. Choose your destinations and the services you need, including flights, buses, trains, hotels and ordinary car transport. Airport pickup, drop-off and local trips use standard cars. Share your name and phone number and the desk emails you back with the plan.',
     },
     {
       category: 'Pricing & Guarantees',
@@ -30,12 +30,12 @@ export const FaqSection: React.FC = () => {
       answer: 'Every booking form sends your name and phone number to shaji@skypetours.com. Add an email if you want a reply there as well. The travel desk contacts you by phone, or by email when you provided one, with availability and the fare in Indian Rupees. Nothing is confirmed until you hear back from the desk.',
     },
     {
-      category: 'Aviation & Concierge',
-      question: 'What privileges are included with Skype Tours private aviation charters?',
-      answer: 'All private jet charters through Skype Private Air feature direct tarmac luxury vehicle transfers, zero commercial terminal queues, confidential CIP security protocols, master stateroom options, Michelin-trained in-flight chefs, and bespoke cellar vintages. Direct boarding is available across our fleet including Bombardier Global 7500 and Citation X aircraft.',
+      category: 'Transport & Concierge',
+      question: 'What transport does Skype Tours provide?',
+      answer: 'Airport pickup, drop-off and local travel are in ordinary cars. These are standard cars only. Skype Tours does not provide private jets, helicopters, or premium cars such as Rolls-Royce. Tell us the pickup point, destination and time, and the desk confirms the car.',
     },
     {
-      category: 'Aviation & Concierge',
+      category: 'Transport & Concierge',
       question: 'How does the 24/7 real-time travel concierge support work?',
       answer: 'Open the booking chat and tell the bot what you need, such as a flight, bus, train, hotel, visa or document service. The bot replies on the page. To go further, enter your name and phone number. That chat is emailed to shaji@skypetours.com and the desk contacts you. Email is optional.',
     },
@@ -71,13 +71,13 @@ export const FaqSection: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-stone-600 text-xs sm:text-sm mt-2 font-light">
-            Everything you need to know about booking portals, itinerary customization, private aviation charters, and dedicated concierge assistance with Skype Tours and Travels.
+            Everything you need to know about booking flights, buses, trains, hotels, ordinary car transfers, and contacting the Skype Tours desk.
           </p>
         </div>
 
         {/* Category Filters */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-          {['All', 'Booking & Portals', 'Custom Itineraries', 'Aviation & Concierge', 'Pricing & Guarantees'].map((cat) => (
+          {['All', 'Booking & Portals', 'Custom Itineraries', 'Transport & Concierge', 'Pricing & Guarantees'].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}

@@ -30,7 +30,7 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
   } | null>(null);
 
   // Transfers selection state
-  const [transferType, setTransferType] = useState('helicopter');
+  const [transferType, setTransferType] = useState('airport');
 
   // Filter packages
   const filteredPackages = TOUR_PACKAGES.filter((pkg) => {
@@ -59,7 +59,7 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
               Direct Reservation & Aviation Desks
             </h2>
             <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-2xl font-light">
-              Secure guaranteed palace suites, private aviation charter legs, and all-inclusive signature expeditions vetted by our senior partners.
+              Secure hotel stays, flight tickets, and holiday packages. Airport and local travel is in ordinary cars.
             </p>
           </div>
 
@@ -255,16 +255,16 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
             <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-300">
               <div className="flex items-center gap-2">
                 <Plane className="w-4 h-4 text-amber-400" />
-                <span>All private air charters include direct tarmac boarding, VIP customs, and bespoke culinary catering.</span>
+                <span>Flight tickets are booked with commercial airlines. Ground transfers use ordinary cars, not private jets or premium cars.</span>
               </div>
               <button
                 onClick={() => {
-                  setChatInitialPrompt("I'd like to request a bespoke private jet flight quote for a custom route. Can you check aircraft availability?");
+                  setChatInitialPrompt("I would like a flight ticket quote. Can you check availability?");
                   setIsChatOpen(true);
                 }}
                 className="text-amber-400 hover:text-amber-300 font-medium underline underline-offset-4 cursor-pointer"
               >
-                Inquire on Custom Jet Charter
+                Inquire on a Flight Ticket
               </button>
             </div>
 
@@ -437,23 +437,23 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
           </div>
         )}
 
-        {/* TAB 4: VIP TRANSFERS & HELICOPTER SKY CHAUFFEUR */}
+        {/* TAB 4: ORDINARY CAR TRANSFERS */}
         {activeTab === 'transfers' && (
           <div className="p-6 md:p-8 rounded-2xl bg-zinc-900/70 border border-zinc-800 space-y-6">
             <div className="max-w-2xl">
               <h3 className="text-xl font-serif font-bold text-zinc-100 mb-2">
-                White-Glove Airport & Inter-Resort Transfers
+                Airport and Local Car Transfers
               </h3>
               <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                Seamless door-to-door transit avoiding crowds. Choose between Airbus executive helicopters, Rolls-Royce Phantom chauffeurs, or private Venetian water taxis.
+                Pickup, drop-off and local trips use ordinary cars. Standard cars only, not private jets and not premium cars such as Rolls-Royce.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div
-                onClick={() => setTransferType('helicopter')}
+                onClick={() => setTransferType('airport')}
                 className={`p-4 rounded-xl border transition-all cursor-pointer ${
-                  transferType === 'helicopter'
+                  transferType === 'airport'
                     ? 'bg-amber-500/10 border-amber-400/80 text-zinc-100'
                     : 'bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:border-zinc-700'
                 }`}
@@ -461,15 +461,14 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
                 <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-amber-400 mb-3 font-bold text-xs">
                   01
                 </div>
-                <h4 className="font-semibold text-sm text-zinc-100 mb-1">Alpine & Coastal Helicopter</h4>
-                <p className="text-xs text-zinc-400">Direct heliport to private mountain chalet or mega-yacht pad.</p>
-                <span className="text-xs font-bold text-amber-400 mt-3 block">{formatPrice(1950)} / leg</span>
+                <h4 className="font-semibold text-sm text-zinc-100 mb-1">Airport Pickup</h4>
+                <p className="text-xs text-zinc-400">A standard car from the airport to your hotel or home.</p>
               </div>
 
               <div
-                onClick={() => setTransferType('rolls')}
+                onClick={() => setTransferType('local')}
                 className={`p-4 rounded-xl border transition-all cursor-pointer ${
-                  transferType === 'rolls'
+                  transferType === 'local'
                     ? 'bg-amber-500/10 border-amber-400/80 text-zinc-100'
                     : 'bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:border-zinc-700'
                 }`}
@@ -477,15 +476,14 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
                 <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-amber-400 mb-3 font-bold text-xs">
                   02
                 </div>
-                <h4 className="font-semibold text-sm text-zinc-100 mb-1">Rolls-Royce / Maybach VIP</h4>
-                <p className="text-xs text-zinc-400">Tarmac meet, English-speaking security chauffeur & refreshments.</p>
-                <span className="text-xs font-bold text-amber-400 mt-3 block">{formatPrice(650)} / transfer</span>
+                <h4 className="font-semibold text-sm text-zinc-100 mb-1">Local Car</h4>
+                <p className="text-xs text-zinc-400">City travel in an ordinary car for the day.</p>
               </div>
 
               <div
-                onClick={() => setTransferType('yacht')}
+                onClick={() => setTransferType('drop')}
                 className={`p-4 rounded-xl border transition-all cursor-pointer ${
-                  transferType === 'yacht'
+                  transferType === 'drop'
                     ? 'bg-amber-500/10 border-amber-400/80 text-zinc-100'
                     : 'bg-zinc-950/60 border-zinc-800 text-zinc-400 hover:border-zinc-700'
                 }`}
@@ -493,9 +491,8 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
                 <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-amber-400 mb-3 font-bold text-xs">
                   03
                 </div>
-                <h4 className="font-semibold text-sm text-zinc-100 mb-1">Private Riva Speedboat Tender</h4>
-                <p className="text-xs text-zinc-400">Direct sea transfer into Venice lagoon or Positano cliff port.</p>
-                <span className="text-xs font-bold text-amber-400 mt-3 block">{formatPrice(1200)} / cruise</span>
+                <h4 className="font-semibold text-sm text-zinc-100 mb-1">Drop-off</h4>
+                <p className="text-xs text-zinc-400">A standard car from your stay back to the airport or station.</p>
               </div>
             </div>
 
@@ -504,9 +501,9 @@ export const BookingPortals: React.FC<BookingPortalsProps> = ({ searchFilterDest
                 onClick={() =>
                   setCheckoutItem({
                     itemType: 'Custom Itinerary',
-                    title: `VIP Transfer Service (${transferType.toUpperCase()})`,
-                    destination: 'Executive Airport to Luxury Haven',
-                    basePriceUSD: transferType === 'helicopter' ? 1950 : transferType === 'rolls' ? 650 : 1200,
+                    title: `Car transfer (${transferType})`,
+                    destination: 'Airport or local address',
+                    basePriceUSD: 40,
                     initialGuests: 2,
                   })
                 }
