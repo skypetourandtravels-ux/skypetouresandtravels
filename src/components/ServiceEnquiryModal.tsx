@@ -37,6 +37,7 @@ export const ServiceEnquiryModal: React.FC<{ service: string; onClose: () => voi
         Service: service,
         Name: form.name,
         Phone: form.phone,
+        Email: form.email,
         ...(form.email ? { email: form.email } : {}),
         ...(isAttestation
           ? { 'Certificate to attest': form.certificate }
@@ -44,10 +45,10 @@ export const ServiceEnquiryModal: React.FC<{ service: string; onClose: () => voi
             ? { 'Place for medical appointment': form.place }
             : isPoliceClearance
               ? {}
-              : { From: form.from || '-', To: form.to || '-' }),
-        'Travel Date': form.travelDate || '-',
-        Travellers: form.travellers || '-',
-        Message: form.message || '-',
+              : { 'From city': form.from, 'To city': form.to }),
+        'Travel date': form.travelDate,
+        Travellers: form.travellers,
+        'Other details': form.message,
       });
       setState('sent');
     } catch (err) {

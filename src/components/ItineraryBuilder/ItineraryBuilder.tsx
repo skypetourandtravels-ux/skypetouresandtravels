@@ -62,18 +62,19 @@ export const ItineraryBuilder: React.FC = () => {
     setState('sending');
     try {
       await sendEnquiry(`Trip plan request: ${tripType} – ${destinations.join(', ')}`, {
-        'Trip Type': tripType,
+        'Trip type': tripType,
         Destinations: destinations.join(', '),
-        'Services Required': services.join(', ') || '-',
-        'Start Date': contact.startDate || '-',
-        'No. of Nights': contact.nights || '-',
-        Adults: contact.adults || '-',
-        Children: contact.children || '-',
+        'Services required': services.join(', '),
+        'Start date': contact.startDate,
+        'Number of nights': contact.nights,
+        Adults: contact.adults,
+        Children: contact.children,
         Name: contact.name,
         Phone: contact.phone,
+        Email: contact.email,
         ...(contact.email ? { email: contact.email } : {}),
-        'City / Departure From': contact.city || '-',
-        'Special Requirements': contact.notes || '-',
+        'City departing from': contact.city,
+        'Special requirements': contact.notes,
       });
       setState('sent');
       setContact(EMPTY_CONTACT);

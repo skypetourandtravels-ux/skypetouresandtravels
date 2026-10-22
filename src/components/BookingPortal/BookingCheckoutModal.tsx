@@ -51,11 +51,12 @@ export const BookingCheckoutModal: React.FC<BookingCheckoutModalProps> = ({
         Destination: destination,
         Name: leadName,
         Phone: phone,
+        Email: email,
         ...(email ? { email } : {}),
-        'Travel Date': travelDate,
+        'Travel date': travelDate,
         Guests: String(guests),
-        'Quoted Amount': formatPrice(totalAmountUSD),
-        Message: specialRequests || '-',
+        'Quoted amount': formatPrice(totalAmountUSD),
+        'Special requests': specialRequests,
       });
       setEmailed(true);
     } catch (err) {

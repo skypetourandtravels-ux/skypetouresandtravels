@@ -48,10 +48,11 @@ const DestinationCard: React.FC<{ dest: Destination }> = ({ dest }) => {
         Category: dest.kind,
         Name: form.name,
         Phone: form.phone,
+        Email: form.email,
         ...(form.email ? { email: form.email } : {}),
-        'Travel Date': form.travelDate || '-',
-        Travellers: form.travellers || '-',
-        Message: form.message || '-',
+        'Travel date': form.travelDate,
+        Travellers: form.travellers,
+        Message: form.message,
       });
       setState('sent');
       setForm({ name: '', phone: '', email: '', travelDate: '', travellers: '', message: '' });

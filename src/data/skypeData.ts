@@ -73,12 +73,36 @@ export const INTERNATIONAL: Destination[] = [
   { name: 'Azerbaijan', tagline: 'Baku, Gabala & Flame Towers', kind: 'International', image: '/images/destinations/azerbaijan.jpg' },
 ];
 
+const fieldValue = (value?: string) => (value && value.trim() ? value.trim() : 'Not entered');
+
 /** Emails an enquiry to ENQUIRY_EMAIL via FormSubmit (no backend required). Throws on failure. */
 export async function sendEnquiry(subject: string, fields: Record<string, string>): Promise<void> {
+  const entries = Object.entries(fields)
+    .filter(([key]) => key !== 'email')
+    .map(([key, value]) => [key, fieldValue(value)] as const);
+  const details = [`Subject: ${subject}`, ...entries.map(([key, value]) => `${key}: ${value}`)].join('\n');
+  const customerName = fieldValue(fields.Name || fields.name);
+  const customerPhone = fieldValue(fields.Phone || fields.phone);
+  const customerEmail = (fields.email || fields.Email || '').trim();
+
+  const form = new FormData();
+  form.append('_subject', subject);
+  form.append('_template', 'table');
+  form.append('_captcha', 'false');
+  form.append('name', customerName);
+  form.append('phone', customerPhone);
+  if (customerEmail) form.append('email', customerEmail);
+  form.append('message', details);
+  for (const [key, value] of entries) {
+    const safe = key.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+    if (!safe || safe === 'name' || safe === 'phone' || safe === 'email' || safe === 'message') continue;
+    form.append(safe, value);
+  }
+
   const res = await fetch(`https://formsubmit.co/ajax/${ENQUIRY_EMAIL}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ _subject: subject, _template: 'table', _captcha: 'false', ...fields }),
+    headers: { Accept: 'application/json' },
+    body: form,
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'Send failed');

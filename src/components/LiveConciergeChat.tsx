@@ -144,9 +144,10 @@ export const LiveConciergeChat: React.FC = () => {
       await sendEnquiry(`Chat enquiry from ${contact.name.trim()}`, {
         Name: contact.name.trim(),
         Phone: contact.phone.trim(),
+        Email: contact.email.trim(),
         ...(contact.email.trim() ? { email: contact.email.trim() } : {}),
-        Request: contact.note.trim() || '-',
-        Conversation: transcript || '-',
+        Request: contact.note.trim(),
+        Conversation: transcript,
       });
       setSendState('sent');
       setMessages((prev) => [
