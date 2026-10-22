@@ -1,0 +1,6 @@
+{
+  "name": "Skype Tours and Travels",
+  "description": "Premium luxury travel agency featuring interactive booking portals for flights, luxury suites, and bespoke tours, custom drag-and-drop itinerary builder, and real-time live concierge chat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
