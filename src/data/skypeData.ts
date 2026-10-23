@@ -1,5 +1,5 @@
 export const ENQUIRY_EMAIL = 'shaji@skypetours.com';
-export const CONTACT_PHONE = '8921651803';
+export const CONTACT_PHONE = '+918921651803';
 export const CONTACT_PHONE_TEL = '+918921651803';
 
 export interface Destination {
